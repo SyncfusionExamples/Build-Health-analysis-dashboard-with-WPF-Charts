@@ -14,13 +14,15 @@ namespace HealthAnalysisDashboard
     public class ViewModel 
     {
         public ObservableCollection<CalorieEntry> CalorieData { get; set; }
+
         public ObservableCollection<MacroNutrient> MacroNutrients { get; set; }
 
         public ObservableCollection<StepsTakenData> StepsData { get; set; }
 
-
         public ObservableCollection<FitnessMetric> Steps { get; set; }
+
         public ObservableCollection<FitnessMetric> Exercise { get; set; }
+
         public ObservableCollection<FitnessMetric> ActiveHours { get; set; }
 
         public ObservableCollection<WaterData> WaterConsumedData { get; set; }
@@ -101,21 +103,17 @@ namespace HealthAnalysisDashboard
 
 
             DailyWaterConsumedData = new ObservableCollection<DailyWaterConsumption>
-        {
-
-
-new DailyWaterConsumption { Time = "00:00", Liters = 1 },
-new DailyWaterConsumption { Time = "03:00", Liters = 2 },
-new DailyWaterConsumption { Time = "06:00", Liters = 3 },
-new DailyWaterConsumption { Time = "09:00", Liters = 2.5 },
-new DailyWaterConsumption { Time = "12:00", Liters = 2 },
-new DailyWaterConsumption { Time = "15:00", Liters = 1.5 },
-new DailyWaterConsumption { Time = "18:00", Liters = 2.2 },
-new DailyWaterConsumption { Time = "21:00", Liters = 2.8 },
-new DailyWaterConsumption { Time = "24:00", Liters = 1.2 }
-
-
-        };
+            {
+                new DailyWaterConsumption { Time = "00:00", Liters = 1 },
+                new DailyWaterConsumption { Time = "03:00", Liters = 2 },
+                new DailyWaterConsumption { Time = "06:00", Liters = 3 },
+                new DailyWaterConsumption { Time = "09:00", Liters = 2.5 },
+                new DailyWaterConsumption { Time = "12:00", Liters = 2 },
+                new DailyWaterConsumption { Time = "15:00", Liters = 1.5 },
+                new DailyWaterConsumption { Time = "18:00", Liters = 2.2 },
+                new DailyWaterConsumption { Time = "21:00", Liters = 2.8 },
+                new DailyWaterConsumption { Time = "24:00", Liters = 1.2 }
+            };
 
             SleepData = new ObservableCollection<SleepEntry>
             {
@@ -136,7 +134,6 @@ new DailyWaterConsumption { Time = "24:00", Liters = 1.2 }
                 new SleepActivity { SleepType = "REM",   Hours = 2.0 },
                 new SleepActivity { SleepType = "Awake", Hours = 0.5 }
             };
-
 
         }
 
