@@ -17,7 +17,7 @@ namespace HealthAnalysisDashboard
 
         public ObservableCollection<MacroNutrient> MacroNutrients { get; set; }
 
-        public ObservableCollection<StepsTakenData> StepsData { get; set; }
+        public ObservableCollection<StepCount> StepsData { get; set; }
 
         public ObservableCollection<FitnessMetric> Steps { get; set; }
 
@@ -25,7 +25,7 @@ namespace HealthAnalysisDashboard
 
         public ObservableCollection<FitnessMetric> ActiveHours { get; set; }
 
-        public ObservableCollection<WaterData> WaterConsumedData { get; set; }
+        public ObservableCollection<WaterConsumption> WaterConsumedData { get; set; }
 
         public ObservableCollection<SleepEntry> SleepData { get; set; }
 
@@ -58,61 +58,58 @@ namespace HealthAnalysisDashboard
 
             StepsData =
             [
-                new StepsTakenData { Day = "Sunday", Steps = 8000 },
-                new StepsTakenData { Day = "Monday", Steps = 6000 },
-                new StepsTakenData { Day = "Tuesday", Steps = 10000},
-                new StepsTakenData { Day = "Wednesday", Steps = 5000 },
-                new StepsTakenData { Day = "Thursday", Steps = 7000 },
-                new StepsTakenData { Day = "Friday", Steps = 8000 },
-                new StepsTakenData { Day = "Saturday", Steps = 6000 }
+                new StepCount { Day = "Sunday", Steps = 8000 },
+                new StepCount { Day = "Monday", Steps = 6000 },
+                new StepCount { Day = "Tuesday", Steps = 10000},
+                new StepCount { Day = "Wednesday", Steps = 5000 },
+                new StepCount { Day = "Thursday", Steps = 7000 },
+                new StepCount { Day = "Friday", Steps = 8000 },
+                new StepCount { Day = "Saturday", Steps = 6000 }
             ];
 
 
             Steps = new ObservableCollection<FitnessMetric>
             {
-                new FitnessMetric { Category = "Completed", Value = 2869, Goal = 9000 },
+                new FitnessMetric { Category = "Progress", Value = 2869, Goal = 9000 },
                 new FitnessMetric { Category = "Remaining", Value = 6131, Goal = 9000 }
             };
 
             Exercise = new ObservableCollection<FitnessMetric>
             {
-                new FitnessMetric { Category = "Completed", Value = 21, Goal = 30 },
+                new FitnessMetric { Category = "Progress", Value = 21, Goal = 30 },
                 new FitnessMetric { Category = "Remaining", Value = 9, Goal = 30 }
             };
 
             ActiveHours = new ObservableCollection<FitnessMetric>
             {
-                new FitnessMetric { Category = "Completed", Value = 5, Goal = 8 },
+                new FitnessMetric { Category = "Progress", Value = 5, Goal = 8 },
                 new FitnessMetric { Category = "Remaining", Value = 3, Goal = 8 }
             };
 
-
-
-
             WaterConsumedData =
-            new ObservableCollection<WaterData>
+            new ObservableCollection<WaterConsumption>
             {
-                new WaterData { Day = "Sunday", Liters = 4 },
-                new WaterData { Day = "Monday", Liters = 5 },
-                new WaterData { Day = "Tuesday", Liters = 6 },
-                new WaterData { Day = "Wednesday", Liters = 6.5 },
-                new WaterData { Day = "Thursday", Liters = 7.5 }, 
-                new WaterData { Day = "Friday", Liters = 6 },
-                new WaterData { Day = "Saturday", Liters = 5.5 }
+                new WaterConsumption { Day = "Sunday", Liters = 4 },
+                new WaterConsumption { Day = "Monday", Liters = 5 },
+                new WaterConsumption { Day = "Tuesday", Liters = 6 },
+                new WaterConsumption { Day = "Wednesday", Liters = 6.5 },
+                new WaterConsumption { Day = "Thursday", Liters = 7.5 }, 
+                new WaterConsumption { Day = "Friday", Liters = 6 },
+                new WaterConsumption { Day = "Saturday", Liters = 5.5 }
             };
 
 
             DailyWaterConsumedData = new ObservableCollection<DailyWaterConsumption>
             {
-                new DailyWaterConsumption { Time = "00:00", Liters = 1 },
-                new DailyWaterConsumption { Time = "03:00", Liters = 2 },
-                new DailyWaterConsumption { Time = "06:00", Liters = 3 },
-                new DailyWaterConsumption { Time = "09:00", Liters = 2.5 },
-                new DailyWaterConsumption { Time = "12:00", Liters = 2 },
-                new DailyWaterConsumption { Time = "15:00", Liters = 1.5 },
-                new DailyWaterConsumption { Time = "18:00", Liters = 2.2 },
-                new DailyWaterConsumption { Time = "21:00", Liters = 2.8 },
-                new DailyWaterConsumption { Time = "24:00", Liters = 1.2 }
+                new DailyWaterConsumption { Time = "00:00", Milliliters = 300 },
+                new DailyWaterConsumption { Time = "03:00", Milliliters = 610 },
+                new DailyWaterConsumption { Time = "06:00", Milliliters = 910 },
+                new DailyWaterConsumption { Time = "09:00", Milliliters = 760 },
+                new DailyWaterConsumption { Time = "12:00", Milliliters = 610 },
+                new DailyWaterConsumption { Time = "15:00", Milliliters = 460 },
+                new DailyWaterConsumption { Time = "18:00", Milliliters = 670 },
+                new DailyWaterConsumption { Time = "21:00", Milliliters = 850 },
+                new DailyWaterConsumption { Time = "24:00", Milliliters = 370 }
             };
 
             SleepData = new ObservableCollection<SleepEntry>

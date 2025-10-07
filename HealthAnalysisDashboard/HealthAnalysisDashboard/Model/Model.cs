@@ -17,7 +17,7 @@ namespace HealthAnalysisDashboard
     public class MacroNutrient
     {
         public string? Name { get; set; }
-
+    
         public int Amount { get; set; }
 
 
@@ -27,40 +27,40 @@ namespace HealthAnalysisDashboard
 
     public class FitnessMetric
     {
-        public string Category { get; set; }
+        public string? Category { get; set; }
         public double Value { get; set; }
         public double Goal { get; set; }
     }
 
 
-    public class WaterData
+    public class WaterConsumption
     {
-        public string Day { get; set; }
+        public string? Day { get; set; }
         public double Liters { get; set; }
     }
 
 
-    public class StepsTakenData
+    public class StepCount
     {
-        public string Day { get; set; }
+        public string? Day { get; set; }
         public int Steps { get; set; }
     }
 
     public class DailyWaterConsumption
     {
-        public string Time { get; set; }     
-        public double Liters { get; set; }   
+        public string? Time { get; set; }     
+        public double Milliliters { get; set; }   
     }
 
     public class SleepEntry
     {
-        public string Day { get; set; }
+        public string? Day { get; set; }
         public double Hours { get; set; }
     }
 
     public class SleepActivity
     {
-        public string SleepType { get; set; }
+        public string? SleepType { get; set; }
 
         public double Hours { get; set; }
     }

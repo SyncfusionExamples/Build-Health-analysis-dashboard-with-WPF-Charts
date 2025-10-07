@@ -8,81 +8,128 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
     WindowState="Maximized">
 
-    <Border BorderThickness="5" Margin="10" CornerRadius="10" BorderBrush="Black" >
+    <Border  BorderThickness="5" Margin="10" CornerRadius="10" BorderBrush="Black" >
         <Grid >
             <Grid.DataContext>
                 <local:ViewModel x:Name="viewModel"/>
             </Grid.DataContext>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
-            <Grid>
+            <Border  Margin="20,10,20,5" Background="#EEEEEE" BorderThickness="0" CornerRadius="10" BorderBrush="Black" Grid.Row="0" >
+                <Grid >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Path x:Name="icon"  Grid.Column="0" HorizontalAlignment="Left" Margin="15,5,0,0"   Fill="#EA5B6F" Width="50" Height="30">
+                        </Path>
+
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"
+                          Text="Personal Wellness Tracker"
+                          FontWeight="Bold"
+                          FontSize="25"/>
+                        <Grid Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="John Smith" FontSize="18" VerticalAlignment="Center" Margin="0,0,5,0" Foreground="#555"/>
+
+                            <Grid Grid.Column="1" HorizontalAlignment="Left" >
+                                <Ellipse Width="35" Height="35" Stroke="Black" StrokeThickness="1.5" Fill="Transparent"/>
+                                <Viewbox Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14">
+                                    <Path x:Name="profileIcon" Fill="Black" Stretch="Uniform"/>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1" >
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Border x:Name="caloriesEatenBorder" Background="#DCDCDC" MouseDown="caloriesEaten_MouseDown" Margin="20,10,10,10" Grid.Column="0" CornerRadius="10" BorderThickness="1" >
+                <Border x:Name="caloriesEatenBorder" Background="White" MouseDown="caloriesEaten_MouseDown" Margin="20,10,10,10" Grid.Column="0" CornerRadius="10" BorderBrush="Black" >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Path x:Name="caloriesEaten"  Stretch="Uniform" Fill="#FFFEFEFE" Width="50" Height="50">
+                        <Path x:Name="caloriesEaten"  Stretch="Uniform" Fill="Black" Width="50" Height="50">
                         </Path>
                         <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                            <TextBlock Text="1300" FontSize="22" Foreground="White" FontWeight="Bold" />
-                            <TextBlock Text="Calorious eaten" FontSize="16" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock x:Name="CaloriesLabel" Text="1300" FontSize="22" Foreground="Black" FontWeight="Bold" />
+                            <TextBlock  x:Name="CaloriesValue" Text="Calorious eaten" FontSize="16" Foreground="Black" FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border x:Name="stepTakenBorder" Background="#DCDCDC" MouseDown="stepTaken_MouseDown" Margin="10" Grid.Column="1" CornerRadius="10"  BorderThickness="1" >
+                <Border x:Name="stepTakenBorder" Background="White" MouseDown="stepTaken_MouseDown" Margin="10" Grid.Column="1" CornerRadius="10" BorderBrush="Black"  >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Path x:Name="stepTakan" Stretch="Uniform" Fill="#FFFFFFFF" Width="50" Height="50">
+                        <Path x:Name="stepTakan" Stretch="Uniform" Fill="Black" Width="50" Height="50">
                         </Path>
                         <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                            <TextBlock Foreground="White" Text="52,100" FontSize="22" FontWeight="Bold" />
-                            <TextBlock Foreground="White" Text="Steps Taken" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock x:Name="stepTakanValue" Foreground="Black" Text="52,100" FontSize="22" FontWeight="Bold" />
+                            <TextBlock x:Name="stepTakanLabel" Foreground="Black" Text="Steps Taken" FontSize="16" FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border x:Name="waterConsumedBorder" Margin="10" Background="#DCDCDC" MouseDown="waterConsumed_MouseDown"  Grid.Column="2" CornerRadius="10" BorderThickness="1" >
+                <Border x:Name="waterConsumedBorder" Margin="10" Background="White" MouseDown="waterConsumed_MouseDown"  Grid.Column="2" CornerRadius="10" BorderBrush="Black"  >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Path x:Name="waterConsumed" Stretch="Uniform" Fill="#FFFEFEFE" Width="40" Height="40" >
+                        <Path x:Name="waterConsumed" Stretch="Uniform" Fill="Black" Width="40" Height="40" >
                         </Path>
                         <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                            <TextBlock Foreground="White" Text="37.6 ltr" FontSize="22" FontWeight="Bold" />
-                            <TextBlock Foreground="White" Text="Water Consumed" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock x:Name="waterConsumedValue" Foreground="Black" Text="37.6 ltr" FontSize="22" FontWeight="Bold" />
+                            <TextBlock x:Name="waterConsumedLabel" Foreground="Black" Text="Water Consumed" FontSize="16" FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border x:Name="sleepDurationBorder" Background="#DCDCDC" MouseDown="sleepDuration_MouseDown" Margin="10,10,20,10" Grid.Column="3" CornerRadius="10" BorderThickness="1" >
+                <Border x:Name="sleepDurationBorder" Background="White" MouseDown="sleepDuration_MouseDown" Margin="10,10,20,10" Grid.Column="3" CornerRadius="10" BorderBrush="Black"  >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Path x:Name="sleepDuration" Stretch="Uniform" Fill="#FFFEFEFE" Width="50" Height="50">
+                        <Path x:Name="sleepDuration" Stretch="Uniform" Fill="Black" Width="50" Height="50">
                         </Path>
                         <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                            <TextBlock Foreground="White" Text="50 Hr" FontSize="22" FontWeight="Bold" />
-                            <TextBlock Foreground="White" Text="Sleep Duration" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock x:Name="sleepDurationValue" Foreground="Black" Text="50 hr" FontSize="22" FontWeight="Bold" />
+                            <TextBlock x:Name="sleepDurationLabel" Foreground="Black" Text="Sleep Duration" FontSize="16" FontWeight="Bold"/>
                         </StackPanel>
                     </Grid>
                 </Border>
             </Grid>
 
-            <ContentControl x:Name="mainView" Grid.Row="1"/>
+            <ContentControl x:Name="mainView" Grid.Row="2"/>
         </Grid>
     </Border>
 

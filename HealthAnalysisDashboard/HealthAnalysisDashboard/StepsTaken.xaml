@@ -41,6 +41,16 @@
                     </StackPanel>
                 </Border>
 
+                <Border Background="#ffb902" Grid.Column="1" Margin="10,10,30,10" CornerRadius="10" BorderBrush="Black">
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="Active Hours" HorizontalAlignment="Center" FontSize="12"/>
+                        <TextBlock Text="4 hours" FontWeight="Bold" FontSize="18"></TextBlock>
+                    </StackPanel>
+                </Border>
+
                 <Border Background="#ffb902" Grid.Column="2" Margin="30,10,0,10" CornerRadius="10" BorderBrush="Black">
                     <Border.Effect>
                         <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
@@ -58,7 +68,7 @@
                 </Border.Effect>
                 <syncfusion:SfChart Margin="5,10,15,5">
                     <syncfusion:SfChart.PrimaryAxis>
-                        <syncfusion:CategoryAxis PlotOffset="10" TickLineSize="0" ShowGridLines="False">
+                        <syncfusion:CategoryAxis PlotOffset="10" TickLineSize="0" FontSize="13" ShowGridLines="False">
                             <syncfusion:CategoryAxis.AxisLineStyle>
                                 <Style TargetType="Line"  >
                                     <Setter Property="StrokeThickness" Value="0"/>
@@ -68,7 +78,10 @@
                         </syncfusion:CategoryAxis>
                     </syncfusion:SfChart.PrimaryAxis>
                     <syncfusion:SfChart.SecondaryAxis>
-                        <syncfusion:NumericalAxis Header="Steps" TickLineSize="0" Minimum="0" Maximum="12000" Interval="2000">
+                        <syncfusion:NumericalAxis Header="Steps" TickLineSize="0" FontSize="13" Minimum="0" Maximum="12000" Interval="2000">
+                            <syncfusion:NumericalAxis.HeaderStyle>
+                                <syncfusion:LabelStyle FontSize="13"></syncfusion:LabelStyle>
+                            </syncfusion:NumericalAxis.HeaderStyle>
                             <syncfusion:NumericalAxis.AxisLineStyle>
                                 <Style TargetType="Line"  >
                                     <Setter Property="StrokeThickness" Value="0"/>
@@ -78,27 +91,27 @@
                     </syncfusion:SfChart.SecondaryAxis>
 
                     <syncfusion:SfChart.Annotations>
-                        <syncfusion:LineAnnotation StrokeDashArray="3,2" X1="-0.6" Y1="9000" X2="6.5" Y2="9000"/>
-                        <syncfusion:TextAnnotation Text="Goal 9000 steps" FontWeight="Bold" X1="5.5" Y1="9700"/>
+                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="-0.6" Y1="9000" X2="6.5" Y2="9000"/>
+                        <syncfusion:TextAnnotation Text="Goal 9000 steps" FontSize="13" FontWeight="Bold" X1="5.5" Y1="9700"/>
                     </syncfusion:SfChart.Annotations>
 
-                    <syncfusion:ColumnSeries ItemsSource="{Binding StepsData}"
+                    <syncfusion:ColumnSeries ItemsSource="{Binding StepsData}" 
                                                     XBindingPath="Day" SegmentSpacing="0.6"
                                                     YBindingPath="Steps" Interior="#C6D870"
                                                     ShowTooltip="True"
                                                     EnableAnimation="True">
+                        
                         <syncfusion:ColumnSeries.TooltipTemplate>
                             <DataTemplate>
-                                <StackPanel  Background="Black" Orientation="Vertical">
+                                <StackPanel Background="Black" Orientation="Vertical">
                                     <TextBlock Text="{Binding Item.Day}"
-                    Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                               Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     <Border Height="1.5" Margin="0,5,0,5" Background="White" ></Border>
                                     <StackPanel Orientation="Horizontal" >
                                         <Border HorizontalAlignment="Left" Margin="0,0,5,0" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Background="#C6D870" Height="10" Width="10" ></Border>
                                         <TextBlock Text="{Binding Item.Steps, StringFormat={}{0} Steps}"
-Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                   Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </StackPanel>
-
                                 </StackPanel>
                             </DataTemplate>
                         </syncfusion:ColumnSeries.TooltipTemplate>
@@ -112,34 +125,52 @@ Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center
             <Border.Effect>
                 <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
             </Border.Effect>
-            <StackPanel Margin="0,20,0,0" Grid.Column="0" >
-                <TextBlock Text="Sunday Activity" HorizontalAlignment="Center" Margin="20,40,20,40" FontWeight="Bold" FontSize="18"/>
-                <syncfusion:SfChart HorizontalAlignment="Center" >
+            <Grid Grid.Column="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <!-- Title -->
+                    <RowDefinition Height="5*"/>
+                    <!-- Chart -->
+                    <RowDefinition Height="3*"/>
+                    <!-- Stats Row -->
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Grid.Row="0" Text="Sunday Activity" HorizontalAlignment="Left" Margin="20,10,20,40" FontWeight="Bold" FontSize="18"/>
+
+                <!-- Chart -->
+                <syncfusion:SfChart Grid.Row="1" HorizontalAlignment="Center">
                     <!-- Steps Ring -->
-                    <syncfusion:DoughnutSeries ItemsSource="{Binding Steps}"
-                                   XBindingPath="Category" StartAngle="-90" EndAngle="270"
-                                   YBindingPath="Value" Palette="Custom"
-                                      EnableAnimation="True"
-                                   DoughnutSize="1"
-                                   >
+                    <syncfusion:DoughnutSeries ItemsSource="{Binding Steps}" ShowTooltip="True" XBindingPath="Category" YBindingPath="Value"
+                                   StartAngle="-90" EndAngle="270" Palette="Custom" DoughnutSize="1" EnableAnimation="True">
                         <syncfusion:DoughnutSeries.ColorModel>
                             <syncfusion:ChartColorModel>
                                 <syncfusion:ChartColorModel.CustomBrushes>
                                     <SolidColorBrush Color="#C6D870"/>
                                     <SolidColorBrush Color="#97B067"/>
-                                    
                                 </syncfusion:ChartColorModel.CustomBrushes>
                             </syncfusion:ChartColorModel>
                         </syncfusion:DoughnutSeries.ColorModel>
+
+                        <syncfusion:DoughnutSeries.TooltipTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Steps" Foreground="#C6D870" FontWeight="SemiBold" FontSize="12" HorizontalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,6,0,6" Background="#C6D870"/>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Border Width="10" Height="10" CornerRadius="2" Margin="0,0,6,0" Background="{Binding Interior}"/>
+                                        <TextBlock Text="{Binding Item.Category}" Foreground="White" FontSize="12" FontWeight="Medium"/>
+                                    </StackPanel>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Value, StringFormat={}{0:N0} steps}" Foreground="White" FontSize="12" FontWeight="Medium" Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </syncfusion:DoughnutSeries.TooltipTemplate>
+
                     </syncfusion:DoughnutSeries>
 
                     <!-- Exercise Minutes Ring -->
-                    <syncfusion:DoughnutSeries ItemsSource="{Binding Exercise}"
-                                   XBindingPath="Category" Palette="Custom" StartAngle="-90" EndAngle="270"
-                                   YBindingPath="Value" 
-                                   DoughnutSize="1"
-                                         EnableAnimation="True"     
-                                   Label="Exercise">
+                    <syncfusion:DoughnutSeries ItemsSource="{Binding Exercise}" ShowTooltip="True" XBindingPath="Category" YBindingPath="Value"
+                                   StartAngle="-90" EndAngle="270" Palette="Custom" DoughnutSize="1" EnableAnimation="True">
                         <syncfusion:DoughnutSeries.ColorModel>
                             <syncfusion:ChartColorModel>
                                 <syncfusion:ChartColorModel.CustomBrushes>
@@ -148,14 +179,24 @@ Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center
                                 </syncfusion:ChartColorModel.CustomBrushes>
                             </syncfusion:ChartColorModel>
                         </syncfusion:DoughnutSeries.ColorModel>
+                        <syncfusion:DoughnutSeries.TooltipTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Exercise" Foreground="#C6D870" FontWeight="SemiBold" FontSize="12" HorizontalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,6,0,6" Background="#C6D870"/>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Border Width="10" Height="10" CornerRadius="2" Margin="0,0,6,0" Background="{Binding Interior}"/>
+                                        <TextBlock Text="{Binding Item.Category}" Foreground="White" FontSize="12" FontWeight="Medium"/>
+                                    </StackPanel>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Value, StringFormat={}{0:N0} min}" Foreground="White" FontSize="12" FontWeight="Medium" Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </syncfusion:DoughnutSeries.TooltipTemplate>
                     </syncfusion:DoughnutSeries>
 
                     <!-- Active Hours Ring -->
-                    <syncfusion:DoughnutSeries ItemsSource="{Binding ActiveHours}" StartAngle="-90" EndAngle="270"
-                                   XBindingPath="Category"
-                                   YBindingPath="Value" Palette="Custom"
-                                   DoughnutSize="1"
-                                               EnableAnimation="True">
+                    <syncfusion:DoughnutSeries ItemsSource="{Binding ActiveHours}" XBindingPath="Category" YBindingPath="Value"
+                                   ShowTooltip="True" StartAngle="-90" EndAngle="270" Palette="Custom" DoughnutSize="1" EnableAnimation="True">
                         <syncfusion:DoughnutSeries.ColorModel>
                             <syncfusion:ChartColorModel>
                                 <syncfusion:ChartColorModel.CustomBrushes>
@@ -165,46 +206,106 @@ Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center
                             </syncfusion:ChartColorModel>
                         </syncfusion:DoughnutSeries.ColorModel>
                         <syncfusion:DoughnutSeries.CenterView>
-                            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                <StackPanel >
+                            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <StackPanel>
                                     <TextBlock Text="1800" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-                                    <TextBlock Margin="0,0,0,15" Text="Calories burned" FontSize="16"  HorizontalAlignment="Center"/>
+                                    <TextBlock Margin="0,0,0,15" Text="Calories burned" FontSize="16" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </ContentControl>
                         </syncfusion:DoughnutSeries.CenterView>
+                        <syncfusion:DoughnutSeries.TooltipTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Active Hours" Foreground="#C6D870" FontWeight="SemiBold" FontSize="12" HorizontalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,6,0,6" Background="#C6D870"/>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Border Width="10" Height="10" CornerRadius="2" Margin="0,0,6,0" Background="{Binding Interior}"/>
+                                        <TextBlock Text="{Binding Item.Category}" Foreground="White" FontSize="12" FontWeight="Medium"/>
+                                    </StackPanel>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Item.Value, StringFormat={}{0:N0} hours}" Foreground="White" FontSize="12" FontWeight="Medium" Margin="0,4,0,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </syncfusion:DoughnutSeries.TooltipTemplate>
                     </syncfusion:DoughnutSeries>
                 </syncfusion:SfChart>
 
-                <StackPanel Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" >
-                    <StackPanel Margin="20,25,40,0" >
-                        <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="2869" ></TextBlock>
-                        <StackPanel Margin="5" Orientation="Horizontal">
-                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="stepTakanIcon" Stretch="Uniform" Fill="Black" Width="20" Height="20"></Path>
-                            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center"  Text="Steps" FontSize="18" ></TextBlock>
-                        </StackPanel>
+                <!-- Stats Row -->
+                <Grid Grid.Row="2" Margin="20,25,20,20" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                    </StackPanel>
-                    <StackPanel Margin="20,25,0,0" >
-                        <TextBlock HorizontalAlignment="Center"  FontSize="30" FontWeight="Bold" Text="21" ></TextBlock>
-                        <StackPanel Margin="5" Orientation="Horizontal">
-                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="exerciseIcon" Stretch="Uniform" Fill="Black" Width="25" Height="25"></Path>
-                            <TextBlock Margin="5,0,0,0"  HorizontalAlignment="Center" Text="Exercise" FontSize="18" ></TextBlock>
-                        </StackPanel>
-                        <TextBlock Margin="5,0,0,0" Text="/min" HorizontalAlignment="Center" FontSize="18" ></TextBlock>
 
-                    </StackPanel>
-                    <StackPanel Margin="30,25,0,0" >
-                        <TextBlock HorizontalAlignment="Center"  FontSize="30" FontWeight="Bold" Text="5" ></TextBlock>
-                        <StackPanel Margin="5" Orientation="Horizontal">
-                            <Path HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="activeHoursIcon" Stretch="Uniform" Fill="Black" Width="25" Height="25"></Path>
-                            <TextBlock Margin="5,0,0,0" Text="Active" FontSize="18" ></TextBlock>
-                        </StackPanel>
-                        <TextBlock Margin="5,0,0,0" Text="hours" HorizontalAlignment="Center" FontSize="18" ></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
+                    <Grid Grid.Row="2" Margin="20" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
+                        <!-- Steps -->
+                        <Grid Margin="20,0,20,0" Grid.Column="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="2869"/>
+                            <Grid Grid.Row="1" Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Grid.Column="0" x:Name="stepTakanIcon" Stretch="Uniform" Fill="Black" Width="20" Height="20"/>
+                                <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="Steps" FontSize="18"/>
+                            </Grid>
+                        </Grid>
+
+                        <!-- Exercise -->
+                        <Grid Grid.Column="1" Margin="20,0,20,0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="21"/>
+                            <Grid Grid.Row="1" Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Grid.Column="0" x:Name="exerciseIcon" Stretch="Uniform" Fill="Black" Width="25" Height="25"/>
+                                <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="Exercise" FontSize="18"/>
+                            </Grid>
+                            <TextBlock Grid.Row="2" Margin="5,0,0,0" Text="/min" HorizontalAlignment="Center" FontSize="18"/>
+                        </Grid>
+
+                        <!-- Active Hours -->
+                        <Grid Grid.Column="2" Margin="20,0,20,0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="5"/>
+                            <Grid Grid.Row="1" Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Grid.Column="0" x:Name="activeHoursIcon" Stretch="Uniform" Fill="Black" Width="25" Height="25"/>
+                                <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="Active" FontSize="18"/>
+                            </Grid>
+                            <TextBlock Grid.Row="2" Margin="5,0,0,0" Text="hours" HorizontalAlignment="Center" FontSize="18"/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
         </Border>
-
     </Grid>
 </UserControl>

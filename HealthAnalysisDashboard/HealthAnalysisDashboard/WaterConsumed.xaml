@@ -47,7 +47,7 @@
                         </Border.Effect>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Text="Target" FontSize="12"/>
-                            <TextBlock FontWeight="Bold" Text="7 Litres" HorizontalAlignment="Center"  FontSize="18"></TextBlock>
+                            <TextBlock FontWeight="Bold" Text="7 litres" HorizontalAlignment="Center"  FontSize="18"></TextBlock>
                         </StackPanel>
                     </Border>
 
@@ -57,7 +57,7 @@
                         </Border.Effect>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Text="Daily Average" FontSize="12"/>
-                            <TextBlock FontWeight="Bold" Text="4.22 Litres" HorizontalAlignment="Center"  FontSize="18"></TextBlock>
+                            <TextBlock FontWeight="Bold" Text="4.22 litres" HorizontalAlignment="Center"  FontSize="18"></TextBlock>
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -68,7 +68,7 @@
                     </Border.Effect>
                     <syncfusion:SfChart Margin="5,10,15,5">
                         <syncfusion:SfChart.PrimaryAxis>
-                            <syncfusion:CategoryAxis ShowGridLines="False" TickLineSize="0" PlotOffset="10">
+                            <syncfusion:CategoryAxis ShowGridLines="False" FontSize="13" TickLineSize="0" PlotOffset="10">
                                 <syncfusion:CategoryAxis.AxisLineStyle>
                                     <Style TargetType="Line"  >
                                         <Setter Property="StrokeThickness" Value="0"/>
@@ -78,7 +78,7 @@
                             </syncfusion:CategoryAxis>
                         </syncfusion:SfChart.PrimaryAxis>
                         <syncfusion:SfChart.SecondaryAxis>
-                            <syncfusion:NumericalAxis TickLineSize="0" Minimum="2" Maximum="10">
+                            <syncfusion:NumericalAxis TickLineSize="0" LabelFormat="{}0 ltr" FontSize="13" Minimum="2" Maximum="10">
                                 <syncfusion:NumericalAxis.AxisLineStyle>
                                     <Style TargetType="Line"  >
                                         <Setter Property="StrokeThickness" Value="0"/>
@@ -88,8 +88,8 @@
                         </syncfusion:SfChart.SecondaryAxis>
 
                         <syncfusion:SfChart.Annotations>
-                            <syncfusion:LineAnnotation StrokeDashArray="3,2" X1="-0.5" Y1="7" X2="6.5" Y2="7"/>
-                            <syncfusion:TextAnnotation Text="Target" FontWeight="Bold" X1="5.5" Y1="7.5"/>
+                            <syncfusion:LineAnnotation FontSize="13" StrokeDashArray="5,5" X1="-0.5" Y1="7" X2="6.5" Y2="7"/>
+                            <syncfusion:TextAnnotation FontSize="13" Text="Target" FontWeight="Bold" X1="5.5" Y1="7.5"/>
                         </syncfusion:SfChart.Annotations>
 
                         <syncfusion:SplineSeries ItemsSource="{Binding WaterConsumedData}"
@@ -114,10 +114,10 @@
                             </syncfusion:SplineSeries.TooltipTemplate>
                             <syncfusion:SplineSeries.AdornmentsInfo>
                                 <syncfusion:ChartAdornmentInfo ShowMarker="True"
-                                                   SymbolStroke="#647FBC"
+                                                   SymbolStroke="#20699C"
                                                    SymbolHeight="10"
                                                    SymbolWidth="10"
-                                                   SymbolInterior="#3396D3"
+                                                   SymbolInterior="White"
                                                    Symbol="Ellipse"/>
                             </syncfusion:SplineSeries.AdornmentsInfo>
                         </syncfusion:SplineSeries>
@@ -130,23 +130,39 @@
                     <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
                 </Border.Effect>
 
-                <StackPanel Margin="0,10,0,0" Grid.Column="0" >
-                    <TextBlock Text="Sunday Activity" HorizontalAlignment="Center" Margin="20,20,20,100" FontWeight="Bold" FontSize="18"/>
-                    <syncfusion:SfChart Width="420">
+
+                <Grid Margin="0,10,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <!-- Title -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Chart -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Goal and Now -->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Title -->
+                    <TextBlock Grid.Row="0" Text="Sunday Activity" HorizontalAlignment="Left" Margin="20,0,20,20" FontWeight="Bold" FontSize="18"/>
+
+                    <!-- Chart -->
+                    <syncfusion:SfChart Height="350" Grid.Row="1" Margin="10,15,10,15">
                         <syncfusion:SfChart.PrimaryAxis>
-                            <syncfusion:CategoryAxis ShowGridLines="False" TickLineSize="0">
+                            <syncfusion:CategoryAxis ShowGridLines="False" FontSize="13" TickLineSize="0">
                                 <syncfusion:CategoryAxis.AxisLineStyle>
-                                    <Style TargetType="Line"  >
+                                    <Style TargetType="Line">
                                         <Setter Property="StrokeThickness" Value="0"/>
                                     </Style>
                                 </syncfusion:CategoryAxis.AxisLineStyle>
                             </syncfusion:CategoryAxis>
                         </syncfusion:SfChart.PrimaryAxis>
-                        
+
                         <syncfusion:SfChart.SecondaryAxis>
-                            <syncfusion:NumericalAxis Minimum="0" TickLineSize="0"  Interval="1" Header="Liters">
+                            <syncfusion:NumericalAxis Minimum="0" TickLineSize="0" FontSize="13" Interval="500" LabelFormat="{}0 ml">
                                 <syncfusion:NumericalAxis.AxisLineStyle>
-                                    <Style TargetType="Line"  >
+                                    <Style TargetType="Line">
                                         <Setter Property="StrokeThickness" Value="0"/>
                                     </Style>
                                 </syncfusion:NumericalAxis.AxisLineStyle>
@@ -154,101 +170,62 @@
                         </syncfusion:SfChart.SecondaryAxis>
 
                         <syncfusion:SfChart.Behaviors>
-                            <syncfusion:ChartSelectionBehavior EnableSegmentSelection="True" >
-                            </syncfusion:ChartSelectionBehavior>
+                            <syncfusion:ChartSelectionBehavior EnableSegmentSelection="True"/>
                         </syncfusion:SfChart.Behaviors>
 
                         <syncfusion:ColumnSeries x:Name="series" ItemsSource="{Binding DailyWaterConsumedData}" 
-                                                XBindingPath="Time" Interior="#77BEF0" ShowTooltip="True"
-                                                YBindingPath="Liters" EnableAnimation="True"
-                                               StrokeThickness="2">
+                                 XBindingPath="Time" Interior="#77BEF0" ShowTooltip="True"
+                                 YBindingPath="Milliliters" EnableAnimation="True"
+                                 StrokeThickness="2">
                             <syncfusion:ColumnSeries.TooltipTemplate>
                                 <DataTemplate>
-                                    <StackPanel Background="Black"  Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Item.Time}" 
-                                             Foreground="White" FontWeight="Bold" FontSize="14" />
-                                        <TextBlock Text="  :  "
-                                              Foreground="White" FontWeight="Bold" FontSize="14" />
-                                        <TextBlock Text="{Binding Item.Liters, StringFormat={}{0} Liter}" 
-                                              Foreground="White" FontWeight="Bold" FontSize="14" />
+                                    <StackPanel Background="Black" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Item.Time}" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="  :  " Foreground="White" FontWeight="Bold" FontSize="14"/>
+                                        <TextBlock Text="{Binding Item.Milliliters, StringFormat={}{0} ml}" Foreground="White" FontWeight="Bold" FontSize="14"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </syncfusion:ColumnSeries.TooltipTemplate>
                         </syncfusion:ColumnSeries>
                     </syncfusion:SfChart>
 
-                    <StackPanel Orientation="Horizontal">
-                        <Grid Margin="20,60,10,20">
-                            <Border BorderThickness="1"
-                                    BorderBrush="Gray"
-                                    CornerRadius="20"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Width="200"
-                                    Height="80">
-                                <StackPanel Orientation="Horizontal">
-                                    <!-- Goal Section -->
-                                    <TextBlock Text="Goal"
-                                               Foreground="Black"
-                                               FontSize="18"
-                                               Padding="30,30,40,30"
-                                               VerticalAlignment="Center" />
-                                    <StackPanel Orientation="Horizontal"
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Center">     
-                                        <TextBlock Text="3500"
-                                                   Foreground="Black"
-                                                   FontSize="20"
-                                                   FontWeight="Bold"
-                                                   VerticalAlignment="Center" />
-                                        <TextBlock Text="ml"
-                                                   FontWeight="Bold"
-                                                   Foreground="Black"
-                                                   FontSize="18"
-                                                   Margin="4,0,0,0"
-                                                   VerticalAlignment="Bottom" />    
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                        <Grid Margin="20,60,20,20">
-                            <Border BorderThickness="1"
-                                    BorderBrush="Gray"
-                                    CornerRadius="20"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Width="200"
-                                    Height="80">            
-                                <StackPanel Orientation="Horizontal">
-                                    <!-- Now Section -->
-                                    <TextBlock Text="Now"
-                                               Foreground="Black"
-                                               FontSize="18"
-                                               Padding="30,30,40,30"
-                                               VerticalAlignment="Center" />    
-                                    <StackPanel Orientation="Horizontal"
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Center">
-                                        <TextBlock Text="700"
-                                                   Foreground="Black"
-                                                   FontSize="20"
-                                                   FontWeight="Bold"
-                                                   VerticalAlignment="Center" />
-                                        <TextBlock Text="ml"
-                                                   FontWeight="Bold"
-                                                   Foreground="Black"
-                                                   FontSize="18"
-                                                   Margin="4,0,0,0"
-                                                   VerticalAlignment="Bottom" />            
-                                    </StackPanel>
-                                </StackPanel>
-                            </Border>
-                        </Grid>
-                    </StackPanel>
-                </StackPanel>
+                    <!-- Goal and Now Section -->
+                    <Grid Margin="0,25,0,0" Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
+                        <!-- Goal -->
+                        <Grid Grid.Column="0" >
+                            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="20"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Goal" Foreground="Black" FontSize="18" Padding="20" VerticalAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <TextBlock Text="7500"  Foreground="Black" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        <TextBlock Text="ml" FontWeight="Bold" Foreground="Black" FontSize="18" Margin="4,0,0,1" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <!-- Now -->
+                        <Grid Grid.Column="1" >
+                            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="20"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Today" Foreground="Black" FontSize="18" Padding="20" VerticalAlignment="Center"/>
+                                    <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                        <TextBlock Text="5600" Foreground="Black" FontSize="20" FontWeight="Bold" VerticalAlignment="Center"/>
+                                        <TextBlock Text="ml" FontWeight="Bold" Foreground="Black" FontSize="18" Margin="4,0,0,1" VerticalAlignment="Bottom"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </Border>
-
         </Grid>
     </Grid>
 </UserControl>

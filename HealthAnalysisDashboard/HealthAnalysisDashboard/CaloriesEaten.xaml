@@ -45,8 +45,8 @@
                         <DropShadowEffect Color="Black" BlurRadius="15" ShadowDepth="0" Opacity="0.3"/>
                     </Border.Effect>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="Today" FontSize="12"/>
-                        <TextBlock Text="1437 Kcal" FontWeight="Bold" FontSize="18"></TextBlock>
+                        <TextBlock Text="Today" HorizontalAlignment="Center" FontSize="12"/>
+                        <TextBlock Text="1437 kcal" FontWeight="Bold" FontSize="18"></TextBlock>
                     </StackPanel>
                 </Border>
 
@@ -56,7 +56,7 @@
                     </Border.Effect>
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock Text="Daily Average" FontSize="12"/>
-                        <TextBlock Text="902 Kcal" FontWeight="Bold" FontSize="18"></TextBlock>
+                        <TextBlock Text="902 kcal" FontWeight="Bold" FontSize="18"></TextBlock>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -67,24 +67,24 @@
                 </Border.Effect>
                 <syncfusion:SfChart Margin="5,10,15,5">
                     <syncfusion:SfChart.PrimaryAxis>
-                        <syncfusion:CategoryAxis PlotOffset="10" TickLineSize="0" ShowGridLines="False"/>
+                        <syncfusion:CategoryAxis PlotOffset="10" FontSize="13" TickLineSize="0" ShowGridLines="False"/>
                     </syncfusion:SfChart.PrimaryAxis>
                     <syncfusion:SfChart.SecondaryAxis>
-                        <syncfusion:NumericalAxis Header="Calories"  Minimum="0" TickLineSize="0" Maximum="3500" Interval="500">
+                        <syncfusion:NumericalAxis LabelFormat="{}0 cal"  FontSize="13" Minimum="0" TickLineSize="0" Maximum="3500" Interval="500">
                             <syncfusion:NumericalAxis.AxisLineStyle>
                                 <Style TargetType="Line"  >
                                     <Setter Property="StrokeThickness" Value="0"/>
                                 </Style>
-
                             </syncfusion:NumericalAxis.AxisLineStyle>
                         </syncfusion:NumericalAxis>
                     </syncfusion:SfChart.SecondaryAxis>
 
                     <syncfusion:SfChart.Annotations>
-                        <syncfusion:LineAnnotation StrokeDashArray="3,2" X1="0" Y1="2000" X2="6" Y2="2000"/>
-                        <syncfusion:LineAnnotation StrokeDashArray="3,2" X1="0" Y1="2800" X2="6" Y2="2800" Fill="Red"/>
-                        <syncfusion:TextAnnotation Text="Today 2000 cal" FontWeight="Bold" X1="4.7" Y1="2150"/>
-                        <syncfusion:TextAnnotation Text="Daily Average 2800 cal" FontWeight="Bold" X1="4.7" Y1="2950"/>
+                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="0" Y1="2000" X2="6" Y2="2000"/>
+                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="0" Y1="2800" X2="6" Y2="2800" />
+                        <syncfusion:TextAnnotation Text="Daily Average 2800 cal" FontSize="13" FontWeight="Bold" X1="4.7" Y1="3050"/>
+                        <syncfusion:TextAnnotation Text="Today 2000 cal" FontSize="13" FontWeight="Bold" X1="4.7" Y1="2250"/>
+                        <syncfusion:TextAnnotation Text="Daily Average 2800 cal" FontSize="13" FontWeight="Bold" X1="4.7" Y1="3050"/>
                     </syncfusion:SfChart.Annotations>
 
                     <syncfusion:LineSeries ItemsSource="{Binding CalorieData}"
@@ -103,23 +103,21 @@
                                         <TextBlock Text="{Binding Item.Calories, StringFormat={}{0} cal}"
                                                 Foreground="White" FontWeight="Medium" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </StackPanel>
-
                                 </StackPanel>
                             </DataTemplate>
                         </syncfusion:LineSeries.TooltipTemplate>
                         <syncfusion:LineSeries.AdornmentsInfo>
                             <syncfusion:ChartAdornmentInfo ShowMarker="True"
-                                                    SymbolStroke="#7AB9DD"
-                                                    SymbolHeight="10"
-                                                    SymbolWidth="10"
-                                                    SymbolInterior="#428BBA"
+                                                    SymbolStroke="#20699C"
+                                                    SymbolHeight="10" 
+                                                    SymbolWidth="10" 
+                                                    SymbolInterior="#7AB9DD"
                                                     Symbol="Ellipse"/>
                         </syncfusion:LineSeries.AdornmentsInfo>
                     </syncfusion:LineSeries>
                 </syncfusion:SfChart>
             </Border>
         </Grid>
-
 
         <Border Grid.Column="1" CornerRadius="10" BorderBrush="Black" Background="#e3edf5" Margin="10,10,20,20">
             <Border.Effect>
@@ -130,14 +128,25 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Margin="0,20,0,0" Grid.Column="0" >
-                    <TextBlock Text="Sunday Activity" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
-                    <syncfusion:SfChart Margin="0,20,0,0">
+
+                <Grid Grid.Column="0" Margin="0,10,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <!-- Title -->
+                        <RowDefinition Height="6*"/>
+                        <!-- Chart -->
+                        <RowDefinition Height="4*"/>
+                        <!-- Nutrient Items -->
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Margin="20,0,0,0" Grid.Row="0" Text="Macro Nutrients" HorizontalAlignment="Left" FontWeight="Bold" FontSize="18"/>
+
+                    <syncfusion:SfChart Grid.Row="1" >
                         <syncfusion:DoughnutSeries x:Name="doughnutSeries" ItemsSource="{Binding MacroNutrients}"
-                                                     XBindingPath="Name"
-                                                     YBindingPath="Amount" Palette="Custom" StartAngle="-225" EndAngle="45"
-                                                     DoughnutCoefficient="0.5"
-                                                     EnableAnimation="True">
+                                   XBindingPath="Name"
+                                   YBindingPath="Amount" Palette="Custom" StartAngle="-225" EndAngle="45"
+                                   DoughnutCoefficient="0.5"
+                                   EnableAnimation="True">
                             <syncfusion:DoughnutSeries.ColorModel>
                                 <syncfusion:ChartColorModel>
                                     <syncfusion:ChartColorModel.CustomBrushes>
@@ -151,42 +160,40 @@
                                 </syncfusion:ChartColorModel>
                             </syncfusion:DoughnutSeries.ColorModel>
                             <syncfusion:DoughnutSeries.CenterView>
-                                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                    <StackPanel >
-                                        <TextBlock Text="1800" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
-                                        <TextBlock Margin="0,0,0,15" Text="Cal consumed" FontSize="16"  HorizontalAlignment="Center"/>
-                                        <Border Height="0.5" Background="Black" ></Border>
+                                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel>
+                                        <TextBlock Margin="0,0,5,0" Text="1800" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                        <TextBlock Margin="0,0,0,15" Text="Cal consumed" FontSize="16" HorizontalAlignment="Center"/>
+                                        <Border Height="0.5" Background="Black"/>
                                         <TextBlock Text="1000 Cal left" FontSize="14" HorizontalAlignment="Center" Margin="0,5,0,20"/>
                                     </StackPanel>
                                 </ContentControl>
                             </syncfusion:DoughnutSeries.CenterView>
                         </syncfusion:DoughnutSeries>
-
                     </syncfusion:SfChart>
 
-                    <Grid HorizontalAlignment="Center" Margin="40,60,0,0" >
-                        <ItemsControl x:Name="nutrientsItems"  ItemsSource="{Binding MacroNutrients}">
+                    <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="40,0,10,20">
+                        <ItemsControl x:Name="nutrientsItems" ItemsSource="{Binding MacroNutrients}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <UniformGrid Columns="2"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
-
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="10" Orientation="Horizontal" >
-                                        <Rectangle Width="6" Height="30" Fill="{Binding Color}" Margin="0,0,10,0"/>
+                                    <StackPanel Margin="10" Orientation="Horizontal">
+                                        <Rectangle Width="6" Height="30" Fill="{Binding Color}" Margin="0,5,10,10"/>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Amount, StringFormat={}{0}g}" FontSize="14" FontWeight="Bold" />
-                                            <TextBlock Text="{Binding Name}" FontSize="12" />
+                                            <TextBlock Text="{Binding Amount, StringFormat={}{0}g}" FontSize="14" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="12"/>
                                         </StackPanel>
-
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </Grid>
-                </StackPanel>
+                </Grid>
+
                 <StackPanel VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0">
                     <Border x:Name="breakfast" BorderThickness="1" CornerRadius="15" BorderBrush="Black"  Width="90" Height="95" Margin="10"  MouseDown="Breakfast_MouseDown">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
