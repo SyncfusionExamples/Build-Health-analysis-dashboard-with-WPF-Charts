@@ -67,7 +67,8 @@
                 </Border.Effect>
                 <syncfusion:SfChart Margin="5,10,15,5">
                     <syncfusion:SfChart.PrimaryAxis>
-                        <syncfusion:CategoryAxis PlotOffset="10" FontSize="13" TickLineSize="0" ShowGridLines="False"/>
+                        <syncfusion:CategoryAxis LabelPlacement="BetweenTicks" FontSize="13" ShowGridLines="False">
+                        </syncfusion:CategoryAxis>
                     </syncfusion:SfChart.PrimaryAxis>
                     <syncfusion:SfChart.SecondaryAxis>
                         <syncfusion:NumericalAxis LabelFormat="{}0 cal"  FontSize="13" Minimum="0" TickLineSize="0" Maximum="3500" Interval="500">
@@ -80,8 +81,8 @@
                     </syncfusion:SfChart.SecondaryAxis>
 
                     <syncfusion:SfChart.Annotations>
-                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="0" Y1="2000" X2="6" Y2="2000"/>
-                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="0" Y1="2800" X2="6" Y2="2800" />
+                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="-0.5" Y1="2000" X2="6" Y2="2000"/>
+                        <syncfusion:LineAnnotation StrokeDashArray="5,5" X1="-0.5" Y1="2800" X2="6" Y2="2800" />
                         <syncfusion:TextAnnotation Text="Daily Average 2800 cal" FontSize="13" FontWeight="Bold" X1="4.7" Y1="3050"/>
                         <syncfusion:TextAnnotation Text="Today 2000 cal" FontSize="13" FontWeight="Bold" X1="4.7" Y1="2250"/>
                         <syncfusion:TextAnnotation Text="Daily Average 2800 cal" FontSize="13" FontWeight="Bold" X1="4.7" Y1="3050"/>

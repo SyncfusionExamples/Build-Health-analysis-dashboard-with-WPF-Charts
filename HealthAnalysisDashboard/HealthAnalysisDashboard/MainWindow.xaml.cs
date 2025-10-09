@@ -36,13 +36,6 @@ namespace HealthAnalysisDashboard
 
         }
 
-
-        private void SetInitialView()
-        {
-            mainView.Content = new CaloriesEaten();
-            HighlightSection(caloriesEatenBorder, "#001950", CaloriesValue, CaloriesLabel, caloriesEaten);
-        }
-
         private void caloriesEaten_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetViewAndHighlight(new CaloriesEaten(), caloriesEatenBorder, "#001950", CaloriesValue, CaloriesLabel, caloriesEaten);
@@ -61,6 +54,11 @@ namespace HealthAnalysisDashboard
         private void waterConsumed_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetViewAndHighlight(new WaterConsumed(), waterConsumedBorder, "#77BEF0", waterConsumedValue, waterConsumedLabel, waterConsumed);
+        }
+        private void SetInitialView()
+        {
+            mainView.Content = new CaloriesEaten();
+            HighlightSection(caloriesEatenBorder, "#001950", CaloriesValue, CaloriesLabel, caloriesEaten);
         }
 
         private void SetViewAndHighlight(UserControl newView, Border activeBorder, string activeColor, TextBlock valueLabel, TextBlock textLabel, Path path)
@@ -99,5 +97,21 @@ namespace HealthAnalysisDashboard
             path.Fill = Brushes.White;
         }
 
+        private const double MinContentWidth = 1100;
+        private const double MinContentHeight = 720;
+
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            bool widthLimited = e.NewSize.Width < MinContentWidth;
+            bool heightLimited = e.NewSize.Height < MinContentHeight;
+
+            scrollViewer.HorizontalScrollBarVisibility =
+                widthLimited ? ScrollBarVisibility.Auto : ScrollBarVisibility.Disabled;
+
+            scrollViewer.VerticalScrollBarVisibility =
+                heightLimited ? ScrollBarVisibility.Auto : ScrollBarVisibility.Disabled;
+
+            scrollViewer.CanContentScroll = widthLimited || heightLimited;
+        }
     }
 }

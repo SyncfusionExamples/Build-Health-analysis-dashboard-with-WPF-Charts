@@ -68,17 +68,10 @@
                 </Border.Effect>
                 <syncfusion:SfChart Margin="5,10,15,5">
                     <syncfusion:SfChart.PrimaryAxis>
-                        <syncfusion:CategoryAxis PlotOffset="40" TickLineSize="0" FontSize="13" ShowGridLines="False">
-                            <syncfusion:CategoryAxis.AxisLineStyle>
-                                <Style TargetType="Line"  >
-                                    <Setter Property="StrokeThickness" Value="0"/>
-                                </Style>
-
-                            </syncfusion:CategoryAxis.AxisLineStyle>
-                        </syncfusion:CategoryAxis>
+                        <syncfusion:CategoryAxis FontSize="13" LabelPlacement="BetweenTicks" ShowGridLines="False"/>
                     </syncfusion:SfChart.PrimaryAxis>
                     <syncfusion:SfChart.SecondaryAxis>
-                        <syncfusion:NumericalAxis Minimum="2" FontSize="13" TickLineSize="0" LabelFormat="{}0 hrs" Maximum="10" Interval="2">
+                        <syncfusion:NumericalAxis Minimum="2" FontSize="13" TickLineSize="0" Header="Hours" Maximum="10" Interval="2">
                             <syncfusion:NumericalAxis.AxisLineStyle>
                                 <Style TargetType="Line"  >
                                     <Setter Property="StrokeThickness" Value="0"/>
@@ -176,21 +169,6 @@
                     </Grid.RowDefinitions>
 
                     <UniformGrid Grid.Row="1" Columns="2" Rows="2" Margin="0,-25,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <!-- Deep Sleep -->
-                        <Border   BorderThickness="0.5" BorderBrush="Black" CornerRadius="10" Margin="15" Padding="30">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Text="4h 48 mins" FontSize="18" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
-                                <TextBlock Text="Deep Sleep" FontSize="14" Foreground="Black" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
-
-                        <!-- Light Sleep -->
-                        <Border BorderThickness="0.5" BorderBrush="Black" CornerRadius="10" Margin="15" Padding="30">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Text="2h 24 mins" FontSize="18" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
-                                <TextBlock Text="Light Sleep" FontSize="14" Foreground="Black" HorizontalAlignment="Center"/>
-                            </StackPanel>
-                        </Border>
 
                         <!-- Awake -->
                         <Border BorderThickness="0.5" BorderBrush="Black" CornerRadius="10" Margin="15" Padding="30">
@@ -207,6 +185,23 @@
                                 <TextBlock Text="REM" FontSize="14" Foreground="Black" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Border>
+
+                        <!-- Deep Sleep -->
+                        <Border   BorderThickness="0.5" BorderBrush="Black" CornerRadius="10" Margin="15" Padding="30">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="2h 24 mins" FontSize="18" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Deep Sleep" FontSize="14" Foreground="Black" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Light Sleep -->
+                        <Border BorderThickness="0.5" BorderBrush="Black" CornerRadius="10" Margin="15" Padding="30">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock Text="4h 48 mins" FontSize="18" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center"/>
+                                <TextBlock Text="Light Sleep" FontSize="14" Foreground="Black" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
                     </UniformGrid>
                 </Grid>
             </Grid>
