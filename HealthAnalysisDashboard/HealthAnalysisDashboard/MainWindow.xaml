@@ -9,7 +9,7 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
     WindowState="Maximized">
 
-    <Border  BorderThickness="5" Margin="10" CornerRadius="10" BorderBrush="Black" >
+    <Border BorderThickness="5" Margin="10" CornerRadius="10" BorderBrush="Black" >
         <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
             <Grid >
                 <Grid.DataContext>
@@ -87,7 +87,7 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
-                            <Path x:Name="stepTakan" Stretch="Uniform" Fill="Black" Width="50" Height="50">
+                            <Path x:Name="stepsTaken" Stretch="Uniform" Fill="Black" Width="50" Height="50">
                             </Path>
                             <StackPanel Margin="10" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
                                 <TextBlock x:Name="stepTakanValue" Foreground="Black" Text="52,100" FontSize="22" FontWeight="Bold" />

@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              >
 
-    <Grid Grid.Row="1">
+    <Grid>
         <Grid.DataContext>
             <local:ViewModel x:Name="viewModel"/>
         </Grid.DataContext>
@@ -256,14 +256,6 @@
                             <TextBlock Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="2869"/>
                             <Path Grid.Row="1" Margin="0,0,0,5" Grid.Column="0" x:Name="stepTakanIcon" Stretch="Uniform" Fill="Black" Width="20" Height="20"/>
                             <TextBlock Grid.Row="2" HorizontalAlignment="Center" Text="Steps" FontSize="18"/>
-                            <!--<Grid  Margin="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                
-                            </Grid>-->
                         </Grid>
 
                         <!-- Exercise -->

@@ -8,7 +8,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
              >
     <Grid>
-        <Grid Grid.Row="1">
+        <Grid>
             <Grid.DataContext>
                 <local:ViewModel x:Name="viewModel"/>
             </Grid.DataContext>

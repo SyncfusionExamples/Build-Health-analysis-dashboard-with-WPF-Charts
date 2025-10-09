@@ -1,11 +1,4 @@
-﻿using Syncfusion.UI.Xaml.Charts;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Media;
 
 namespace HealthAnalysisDashboard
@@ -14,23 +7,14 @@ namespace HealthAnalysisDashboard
     public class ViewModel 
     {
         public ObservableCollection<CalorieEntry> CalorieData { get; set; }
-
         public ObservableCollection<MacroNutrient> MacroNutrients { get; set; }
-
         public ObservableCollection<StepCount> StepsData { get; set; }
-
         public ObservableCollection<FitnessMetric> Steps { get; set; }
-
         public ObservableCollection<FitnessMetric> Exercise { get; set; }
-
         public ObservableCollection<FitnessMetric> ActiveHours { get; set; }
-
         public ObservableCollection<WaterConsumption> WaterConsumedData { get; set; }
-
         public ObservableCollection<SleepEntry> SleepData { get; set; }
-
         public ObservableCollection<DailyWaterConsumption> DailyWaterConsumedData { get; set; }
-
         public ObservableCollection<SleepActivity> SleepActivityData { get; set; }
 
         public ViewModel()
@@ -67,7 +51,6 @@ namespace HealthAnalysisDashboard
                 new StepCount { Day = "Saturday", Steps = 6000 }
             ];
 
-
             Steps = new ObservableCollection<FitnessMetric>
             {
                 new FitnessMetric { Category = "Progress", Value = 2869, Goal = 9000 },
@@ -98,7 +81,6 @@ namespace HealthAnalysisDashboard
                 new WaterConsumption { Day = "Saturday", Liters = 5.5 }
             };
 
-
             DailyWaterConsumedData = new ObservableCollection<DailyWaterConsumption>
             {
                 new DailyWaterConsumption { Time = "00:00", Milliliters = 300 },
@@ -123,7 +105,6 @@ namespace HealthAnalysisDashboard
                 new SleepEntry { Day = "Saturday",  Hours = 9 }
             };
 
-
             SleepActivityData = new ObservableCollection<SleepActivity>
             {
                 new SleepActivity { SleepType = "Light", Hours = 4.5 },
@@ -131,12 +112,12 @@ namespace HealthAnalysisDashboard
                 new SleepActivity { SleepType = "REM",   Hours = 2.0 },
                 new SleepActivity { SleepType = "Awake", Hours = 0.5 }
             };
-
         }
 
         public void UpdateMacroNutrients(IEnumerable<MacroNutrient> newData)
         {
             MacroNutrients.Clear();
+
             foreach (var item in newData)
             {
                 MacroNutrients.Add(item);
