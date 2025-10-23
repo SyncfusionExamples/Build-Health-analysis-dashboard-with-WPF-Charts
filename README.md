@@ -120,8 +120,8 @@ If you are facing a **path too long** exception when building this example proje
 
 ### Phase 1: Calories and Steps Tracking
 
-Refer to the blog for step-by-step guidance: [Creating a Health Tracker App with Syncfusion WPF Chart Controls](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-calories-steps).
+Refer to the blog for step-by-step guidance on [visualizing calories burned and steps taken in the Health Tracker dashboard](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-calories-steps).
 
 ### Phase 2: Water and Sleep Tracking (Coming Soon)
 
-This section will be updated with the blog link once Phase 2 is published.
+Refer to the blog for step-by-step guidance on visualizing  water consumption and sleep duration in the Health Tracker dashboard.
