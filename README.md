@@ -118,4 +118,10 @@ The shell uses three grid rows:
 
 If you are facing a **path too long** exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.**Path too long** exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.
 
-For a step-by-step procedure, refer to the [Creating a Health Tracker App with Syncfusion WPF Chart Controls](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-calories-steps).
+### Phase 1: Calories and Steps Tracking
+
+Refer to the blog for step-by-step guidance: [Creating a Health Tracker App with Syncfusion WPF Chart Controls](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-calories-steps).
+
+### Phase 2: Water and Sleep Tracking (Coming Soon)
+
+This section will be updated with the blog link once Phase 2 is published.
