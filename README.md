@@ -118,4 +118,4 @@ The shell uses three grid rows:
 
 If you are facing a **path too long** exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.**Path too long** exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.
 
-For a step-by-step procedure, refer to the [Creating a Health Tracker App with Syncfusion WPF Chart Controls](https://www.syncfusion.com/blogs/post/build-real-time-ecg-monitoring-dashboard-wpf-charts).
+For a step-by-step procedure, refer to the [Creating a Health Tracker App with Syncfusion WPF Chart Controls](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-calories-steps).
