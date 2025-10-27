@@ -122,6 +122,6 @@ If you are facing a **path too long** exception when building this example proje
 
 Refer to the blog for step-by-step guidance on [visualizing calories burned and steps taken in the Health Tracker dashboard](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-calories-steps).
 
-### Phase 2: Water and Sleep Tracking (Coming Soon)
+### Phase 2: Water and Sleep Tracking
 
-Refer to the blog for step-by-step guidance on visualizing  water consumption and sleep duration in the Health Tracker dashboard.
+Refer to the blog for step-by-step guidance on [visualizing  water consumption and sleep duration in the Health Tracker dashboard](https://www.syncfusion.com/blogs/post/wpf-health-tracker-chart-phase-2?sleep_patterns_with_interactive_charts).
